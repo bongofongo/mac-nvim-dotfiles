@@ -1,0 +1,51 @@
+return {
+  "yetone/avante.nvim",
+  event = "VeryLazy",
+  build = vim.fn.has("win32") ~= 0
+      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
+  version = false,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    -- nice-to-haves:
+    "MeanderingProgrammer/render-markdown.nvim",
+    "hrsh7th/nvim-cmp",
+    "nvim-tree/nvim-web-devicons",
+  },
+  opts = function()
+    -- choose default provider at startup via env variable or fallback:
+    -- local default_provider = vim.env.AVANTE_PROVIDER or "claude"  -- "claude" | "openai"
+
+
+    return {
+      -- Ensure diffs are shown first (no auto-apply)
+      mode = "legacy",
+      behaviour = {
+        auto_apply_diff_after_generation = false, -- show patch view first
+        enable_fastapply = false,
+      },
+      instructions_file = "avante.md",
+      -- provider = "openai"
+      providers = {
+        -- Claude (Anthropic)
+        -- claude = {
+        --   endpoint = "https://api.anthropic.com",
+        --   model = "claude-3-7-sonnet-2025-05-14", -- pick your model
+        --   timeout = 30000,
+        --   -- forwarded to provider:
+        --   extra_request_body = { temperature = 0.5, max_tokens = 4096 },
+        -- },
+        --
+        -- OpenAI
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-4o-mini", -- or another model you use
+          timeout = 30000,
+          extra_request_body = { temperature = 0.5, max_tokens = 4096 },
+        },
+      },
+    }
+  end,
+}
+
