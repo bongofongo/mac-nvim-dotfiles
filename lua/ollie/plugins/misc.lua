@@ -1,8 +1,8 @@
 return {
   -- lua functions that many plugins use
-  "nvim-lua/plenary.nvim", 
+  "nvim-lua/plenary.nvim",
   -- tmux & split window navigation
-  "christoomey/vim-tmux-navigator", 
+  "christoomey/vim-tmux-navigator",
   -- Allows cursor locations in the :e
   "lewis6991/fileline.nvim",
   --  Automatically jump to the last cursor position
@@ -98,11 +98,29 @@ return {
   },
   {
     "lervag/vimtex",
-    lazy = false,     -- we don't want to lazy load VimTeX
+    lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
       vim.g.vimtex_view_method = "skim"
+      -- changing engine from pdflatex to xelatex
+      vim.g.vimtex_compiler_method = "latexmk"
+      vim.g.vimtex_compiler_latexmk = {
+        executable = "/Library/TeX/texbin/latexmk",
+        options = {
+          "-verbose",
+          "-file-line-error",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+        },
+      }
+      vim.g.vimtex_compiler_latexmk_engines = {
+        ["_"] = "-xelatex",
+      }
+      vim.g.vimtex_view_enabled = 1
+
+      -- Makes VimTeX only compile the detected root file
+      vim.g.vimtex_root_markers = { ".latexmkrc", "main.tex" }
     end
   },
   -- {
@@ -138,4 +156,3 @@ return {
     },
   },
 }
-
