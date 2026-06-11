@@ -33,6 +33,8 @@ return {
         "vimdoc",
         "c",
         "ocaml",
+        "markdown",
+        "markdown_inline",
       },
       incremental_selection = {
         enable = true,
