@@ -1,5 +1,5 @@
 local function new_note()
-  local folders = { "inbox", "notes", "source", "maps", "projects" }
+  local folders = { "inbox", "notes", "source", "maps", "projects", "thoughts" }
   vim.ui.select(folders, { prompt = "Folder" }, function(dir)
     if not dir then
       return
@@ -23,17 +23,17 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   keys = {
-    { "<leader>on", new_note, desc = "New note (pick folder)" },
-    { "<leader>oo", "<cmd>Obsidian quick_switch<CR>", desc = "Quick switch note" },
-    { "<leader>og", "<cmd>Obsidian search<CR>", desc = "Grep vault" },
-    { "<leader>ob", "<cmd>Obsidian backlinks<CR>", desc = "Backlinks" },
-    { "<leader>op", "<cmd>Obsidian paste_img<CR>", desc = "Paste clipboard image" },
-    { "<leader>od", "<cmd>Obsidian today<CR>", desc = "Daily note (today)" },
-    { "<leader>oy", "<cmd>Obsidian yesterday<CR>", desc = "Daily note (yesterday)" },
+    { "<leader>on", new_note,                           desc = "New note (pick folder)" },
+    { "<leader>oo", "<cmd>Obsidian quick_switch<CR>",   desc = "Quick switch note" },
+    { "<leader>og", "<cmd>Obsidian search<CR>",         desc = "Grep vault" },
+    { "<leader>ob", "<cmd>Obsidian backlinks<CR>",      desc = "Backlinks" },
+    { "<leader>op", "<cmd>Obsidian paste_img<CR>",      desc = "Paste clipboard image" },
+    { "<leader>od", "<cmd>Obsidian today<CR>",          desc = "Daily note (today)" },
+    { "<leader>oy", "<cmd>Obsidian yesterday<CR>",      desc = "Daily note (yesterday)" },
     { "<leader>ox", "<cmd>e ~/vault/scratchpad.md<CR>", desc = "Scratchpad" },
-    { "<leader>or", "<cmd>Obsidian rename<CR>", desc = "Rename note (update links)" },
-    { "<leader>ot", "<cmd>Obsidian template<CR>", desc = "Insert template" },
-    { "<leader>oa", "<cmd>Obsidian open<CR>", desc = "Open in Obsidian app" },
+    { "<leader>or", "<cmd>Obsidian rename<CR>",         desc = "Rename note (update links)" },
+    { "<leader>ot", "<cmd>Obsidian template<CR>",       desc = "Insert template" },
+    { "<leader>oa", "<cmd>Obsidian open<CR>",           desc = "Open in Obsidian app" },
   },
   opts = {
     legacy_commands = false,
